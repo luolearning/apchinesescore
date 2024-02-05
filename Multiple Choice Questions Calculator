@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #4caf50; /* Green color */
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+            padding: 8px;
+        }
+        button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin-top: 16px;
+        }
+        #result {
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Multiple Choice Questions</h2>
+        
+        <!-- Reading Section -->
+        <label for="readingCorrect">Reading Correct Answers:</label>
+        <input type="number" id="readingCorrect" min="0" value="0">
+        
+        <label for="readingTotal">Reading Question Numbers:</label>
+        <input type="number" id="readingTotal" min="0" value="0">
+
+        <!-- Rejoinders Section -->
+        <label for="rejoindersCorrect">Rejoinders Correct Answers:</label>
+        <input type="number" id="rejoindersCorrect" min="0" value="0">
+
+        <label for="rejoindersTotal">Rejoinders Question Numbers:</label>
+        <input type="number" id="rejoindersTotal" min="0" value="0">
+
+        <!-- Listening Section -->
+        <label for="listeningCorrect">Listening Selection Correct Answers:</label>
+        <input type="number" id="listeningCorrect" min="0" value="0">
+
+        <label for="listeningTotal">Listening Selection Question Numbers:</label>
+        <input type="number" id="listeningTotal" min="0" value="0">
+        
+        <button onclick="calculateScore()">Calculate Score</button>
+        
+        <p>Your Estimated MCQ Score: <span id="result">-</span></p>
+    </div>
+
+    <script>
+        function calculateScore() {
+            // Get values from input fields
+            var readingCorrect = parseInt(document.getElementById("readingCorrect").value) || 0;
+            var readingTotal = parseInt(document.getElementById("readingTotal").value) || 0;
+            var rejoindersCorrect = parseInt(document.getElementById("rejoindersCorrect").value) || 0;
+            var rejoindersTotal = parseInt(document.getElementById("rejoindersTotal").value) || 0;
+            var listeningCorrect = parseInt(document.getElementById("listeningCorrect").value) || 0;
+            var listeningTotal = parseInt(document.getElementById("listeningTotal").value) || 0;
+
+            // Calculate total MCQ score
+            var mcqScore = (readingCorrect / Math.max(1, readingTotal)) * 25 + (rejoindersCorrect / Math.max(1, rejoindersTotal)) * 10 + (listeningCorrect / Math.max(1, listeningTotal)) * 15;
+
+            // Display the result
+            document.getElementById("result").textContent = mcqScore.toFixed(2);
+        }
+    </script>
+</body>
+</html>
