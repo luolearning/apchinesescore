@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Points Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #4caf50; /* Green color */
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 80%;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+            padding: 8px;
+        }
+        button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin-top: 16px;
+        }
+        #result {
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Final Points Calculator</h2>
+        
+        <!-- MCQ Raw Score -->
+        <label for="mcqRawScore">MCQ Raw Score:</label>
+        <input type="number" id="mcqRawScore" min="0" value="0">
+        
+        <!-- FRQ Raw Score -->
+        <label for="frqRawScore">FRQ Raw Score:</label>
+        <input type="number" id="frqRawScore" min="0" value="0">
+        
+        <!-- Calculate Final Points -->
+        <button onclick="calculateFinalPoints()">Calculate Final Points</button>
+        
+        <p>Your Estimated Final Points: <span id="result">-</span></p>
+    </div>
+
+    <script>
+        function calculateFinalPoints() {
+            // Get values from input fields
+            var mcqRawScore = parseInt(document.getElementById("mcqRawScore").value) || 0;
+            var frqRawScore = parseInt(document.getElementById("frqRawScore").value) || 0;
+
+            // Calculate final points by summing MCQ and FRQ raw scores and multiplying with 1.2
+            var finalPoints = (mcqRawScore + frqRawScore) * 1.2;
+
+            // Display the result
+            document.getElementById("result").textContent = finalPoints.toFixed(2);
+        }
+    </script>
+</body>
+</html>
